@@ -16,34 +16,34 @@ function Clean($input,$flag = 0){
 
 if ($_SERVER['REQUEST_METHOD'] == "POST"){
 
-    $name = Clean($_POST['name']);
-    $email = Clean($_POST['email']);
-    $password = Clean($_POST['password']);
+    $title = Clean($_POST['title']);
+    $content = Clean($_POST['content']);
+   // $password = Clean($_POST['password']);
 
     $errors = [];
 
     // Validating Name 
 
-    if(empty($name)){
+    if(empty($title)){
         $errors['name'] = "Field Required"; 
     }
 
     // Validating Email
 
-    if(empty($email)){
+    if(empty($content)){
         $errors['email'] = "Field Required";
     }elseif(!filter_var($email,FILTER_VALIDATE_EMAIL)){
        $errors['Email']   = "Invalid Email";
     }
 
     //Validating Password 
-
+    /*
     if(empty($password)){
         $errors['password'] = "Field Required";
     }elseif(strlen($password) < 6){
         $errors['Password'] = "Length Must be >= 6 chars";
     }
-
+    */
     // Validate Image Uplading 
 
     if (!empty($_FILES['image']['name'])){
@@ -98,7 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
         $password = md5($password);
 
 
-        $sql = "insert into users (name,email,password) values ('$name','$email','$password')";
+        $sql = "insert into users (name,email,password) values ('$title','$content','$password')";
 
         $action  =  mysqli_query($conn,$sql);
 
@@ -132,27 +132,27 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
 <body>
       
     <div class="container">
-        <h2>Register</h2>
+        <h2>Blog</h2>
 
         <form action="<?php echo   htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" enctype="multipart/form-data">
 
 
         <div class="form-group">
-                <label for="exampleInputName">Name</label>
-                <input type="text" class="form-control" required  id="exampleInputName" aria-describedby=""   name="name" placeholder="Enter Name">
+                <label for="exampleInputName">Title</label>
+                <input type="text" class="form-control" required  id="exampleInputName" aria-describedby=""   name="title" placeholder="Enter Name">
             </div>
 
 
             <div class="form-group">
-                <label for="exampleInputEmail">Email address</label>
-                <input type="text" class="form-control"  required  id="exampleInputEmail1" aria-describedby="emailHelp" name="email" placeholder="Enter email">
+                <label for="exampleInputEmail">Content</label>
+                <input type="text" class="form-control"  required  id="exampleInputEmail1" aria-describedby="emailHelp" name="content" placeholder="Enter Content" height="100px">
             </div>
-
+            <!---
             <div class="form-group">
                 <label for="exampleInputPassword">New Password</label>
                 <input type="password" class="form-control" required id="exampleInputPassword1"   name="password" placeholder="Password">
             </div>
-
+            --->
             <div class="form-group">
                 <label for="exampleInputPassword">Image</label>
                 <input type="file" name="image">
