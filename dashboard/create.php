@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
 
     // Validate Image Uplading 
 
-    /*if (!empty($_FILES['image']['name'])){
+    if (!empty($_FILES['image']['name'])){
 
         $imgName = $_FILES['image']['name'];
         $imgSize = $_FILES['image']['size'];
@@ -78,7 +78,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
     else {
         $errors ['Image'] = "Image Empty";
     }
-    */
+    
 
     //Errors Check 
 
@@ -153,10 +153,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
                 <input type="password" class="form-control" required id="exampleInputPassword1"   name="password" placeholder="Password">
             </div>
 
-           <!--- <div class="form-group">
+            <div class="form-group">
                 <label for="exampleInputPassword">Image</label>
                 <input type="file" name="image">
-            </div> --->
+            </div>
 
             
 

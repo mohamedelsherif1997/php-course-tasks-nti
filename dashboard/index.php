@@ -75,7 +75,7 @@ $data = mysqli_query($conn,$sql);
                 <th>ID</th>
                 <th>Name</th>
                 <th>Email</th>
-
+                <th>Image</th>
                 <th>action</th>
             </tr>
 
@@ -88,7 +88,7 @@ $data = mysqli_query($conn,$sql);
                 <td><?php  echo $result['id'];  ?></td>
                 <td><?php  echo $result['name'];  ?></td>
                 <td><?php  echo $result['email'];  ?></td>
-
+                <td><img src="img_girl.jpg"  width="50" height="50" style="border-radius: 50%;"><td>
                 <td>
                     <a href='delete.php?id=<?php  echo $result['id'];  ?>' class='btn btn-danger m-r-1em'>Delete</a>
                     <a href='edit.php?id=<?php  echo $result['id'];  ?>' class='btn btn-primary m-r-1em'>Edit</a>
