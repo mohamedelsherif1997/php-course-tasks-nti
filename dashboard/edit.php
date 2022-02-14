@@ -22,23 +22,23 @@ function Clean($input,$flag = 0){
 
 if ($_SERVER['REQUEST_METHOD'] == "POST"){
 
-    $name = Clean($_POST['name']);
-    $email = Clean($_POST['email']);
+    $title = Clean($_POST['title']);
+    $content = Clean($_POST['content']);
    // $password = Clean($_POST['password']);
 
     $errors = [];
 
     // Validating Name 
 
-    if(empty($name)){
+    if(empty($title)){
         $errors['name'] = "Field Required"; 
     }
 
     // Validating Email
 
-    if(empty($email)){
+    if(empty($content)){
         $errors['email'] = "Field Required";
-    }elseif(!filter_var($email,FILTER_VALIDATE_EMAIL)){
+    }elseif(!filter_var($content,FILTER_VALIDATE_EMAIL)){
        $errors['Email']   = "Invalid Email";
     }
 
@@ -148,13 +148,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
 
 
         <div class="form-group">
-                <label for="exampleInputName">Name</label>
+                <label for="exampleInputName">Title</label>
                 <input type="text" class="form-control" required  id="exampleInputName" aria-describedby=""   name="name" value="<?php echo $data['name'];?>">
             </div>
 
 
             <div class="form-group">
-                <label for="exampleInputEmail">Email address</label>
+                <label for="exampleInputEmail">Content</label>
                 <input type="text" class="form-control"  required  id="exampleInputEmail1" aria-describedby="emailHelp" name="email" value="<?php echo $data['email'];?>">
             </div>
 

@@ -16,7 +16,7 @@ $data = mysqli_query($conn,$sql);
 <html>
 
 <head>
-    <title>Users</title>
+    <title>Blogs</title>
 
     <!-- Latest compiled and minified Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
@@ -73,8 +73,8 @@ $data = mysqli_query($conn,$sql);
             <!-- creating our table heading -->
             <tr>
                 <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
+                <th>Title</th>
+                <th>Content</th>
                 <th>Image</th>
                 <th>action</th>
             </tr>
@@ -99,7 +99,7 @@ $data = mysqli_query($conn,$sql);
             <!-- end table -->
         </table>
         
-    <a href="create.php">+ Account</a>
+    <a href="create.php">+ Blog</a>
 
     </div>
     <!-- end .container -->
