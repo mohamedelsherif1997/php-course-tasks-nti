@@ -4,7 +4,7 @@ require 'dbConnect.php';
 
 $id = $_GET['id'];
 
-$sql = "select id,name,email from users where id = $id";
+$sql = "SELECT id,name,email FROM bloger WHERE id = $id";
 $action  = mysqli_query($conn,$sql);
 
 $data= mysqli_fetch_assoc($action);
@@ -31,15 +31,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
     // Validating Name 
 
     if(empty($title)){
-        $errors['name'] = "Field Required"; 
+        $errors['Title'] = "Field Required"; 
     }
 
     // Validating Email
 
     if(empty($content)){
-        $errors['email'] = "Field Required";
-    }elseif(!filter_var($content,FILTER_VALIDATE_EMAIL)){
-       $errors['Email']   = "Invalid Email";
+        $errors['Content'] = "Field Required";
     }
 
     //Validating Password 
@@ -52,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
 
     // Validate Image Uplading 
 
-    /*if (!empty($_FILES['image']['name'])){
+    if (!empty($_FILES['image']['name'])){
 
         $imgName = $_FILES['image']['name'];
         $imgSize = $_FILES['image']['size'];
@@ -84,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
     else {
         $errors ['Image'] = "Image Empty";
     }
-    */
+    
 
     //Errors Check 
 
@@ -102,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
     }else{
 
         
-        $sql = "update users set name = '$name' , email = '$email' where  id = $id";
+        $sql = "UPDATE bloger SET title = '$title' , content = '$content', image ='  $imgFinalName' WHERE  id = $id";
 
         $action  =  mysqli_query($conn,$sql);
 
@@ -163,10 +161,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
                 <input type="password" class="form-control" required id="exampleInputPassword1"   name="password" placeholder="Password">
             </div> --->
 
-           <!--- <div class="form-group">
+            <div class="form-group">
                 <label for="exampleInputPassword">Image</label>
                 <input type="file" name="image">
-            </div> --->
+            </div> 
 
             
 

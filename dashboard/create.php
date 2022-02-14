@@ -22,20 +22,17 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
 
     $errors = [];
 
-    // Validating Name 
+    // Validating Title 
 
     if(empty($title)){
-        $errors['name'] = "Field Required"; 
+        $errors['title'] = "Field Required"; 
     }
 
-    // Validating Email
+    // Validating Content
 
     if(empty($content)){
-        $errors['email'] = "Field Required";
-    }elseif(!filter_var($email,FILTER_VALIDATE_EMAIL)){
-       $errors['Email']   = "Invalid Email";
+        $errors['content'] = "Field Required";
     }
-
     //Validating Password 
     /*
     if(empty($password)){
@@ -95,10 +92,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
 
     }else{
 
-        $password = md5($password);
 
-
-        $sql = "insert into users (name,email,password) values ('$title','$content','$password')";
+        $sql = "INSERT INTO bloger (title,content,image) VALUES ('$title','$content','$imgFinalName')";
 
         $action  =  mysqli_query($conn,$sql);
 

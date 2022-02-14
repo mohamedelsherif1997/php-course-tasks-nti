@@ -4,7 +4,7 @@ require 'dbConnect.php';
 
  $id = $_GET['id'];
  
- $sql = "DELETE FROM users WHERE id = $id";
+ $sql = "DELETE FROM bloger WHERE id = $id";
 
  $action = mysqli_query($conn,$sql);
 
