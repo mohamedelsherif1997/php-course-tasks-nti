@@ -117,12 +117,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
 
     <div>
     <label>Start Date</label>
-    <input type="date" required name="start" value="2022-2-15" min = "2022-2-15" max = "3000-3-15">
+    <input type="date" required name="start"  value="<?php echo(date('Y-m-d')); ?>" min = "<?php echo(date('Y-m-d')); ?>" max = "3000-03-15">
     </div>
 
     <div>
     <label>End Date</label>
-    <input type="date" required name="end" value="2022-2-15" min = "2022-2-15" max = "3000-3-15">
+    <input type="date" required name="end" value="<?php echo(date('Y-m-d')); ?>" min = "<?php echo(date('Y-m-d')); ?>" max = "3000-03-15">
     </div>
 
     <div>
