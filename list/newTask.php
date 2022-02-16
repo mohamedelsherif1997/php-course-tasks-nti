@@ -79,7 +79,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
         mysqli_close($con);
 
         if($op){
-            echo 'Raw Inserted';
+            echo 'Raw Inserted<br>';
+            echo "Click <a href='index.php'>here</a> to view tasks";
         }else{
             echo 'Error Try Again '.mysqli_error($con);
         }
