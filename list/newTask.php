@@ -8,8 +8,8 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
 
     $title = $_POST['title'];
     $content = $_POST['content'];
-    $start = $_POST['start'];
-    $end = $_POST['end'];
+    $start = date('Y-m-d',strtotime( $_POST['start']));
+    $end = date('Y-m-d',strtotime($_POST['end']));
 
     $errors = [] ;
 
@@ -24,6 +24,16 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
     if(empty($content)){
         $errors['Content'] = "Content Required";
     }  
+     // Validate Date 
+
+     if(empty($start)|| empty($end)){ // If The Time Field Is Empty 
+
+        $errors['Time'] = "Time Field Is Empty";
+
+    }elseif ($end < $start){ // To make Sure That the End Date Above The Start Date 
+
+        $errors['Time'] = "Not Logical Dates";
+    }
 
     // Validate Image
 
