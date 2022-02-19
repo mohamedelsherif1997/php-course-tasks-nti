@@ -1,5 +1,7 @@
 <?php
+session_start();
 
+if(isset($_SESSION['user'])){
 require "helpers.php";
 require 'dbconnect.php';
 
@@ -24,9 +26,10 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
     if(empty($content)){
         $errors['Content'] = "Content Required";
     }  
-     // Validate Date 
 
-     if(empty($start)|| empty($end)){ // If The Time Field Is Empty 
+    // Validate Date 
+
+    if(empty($start)|| empty($end)){ // If The Time Field Is Empty 
 
         $errors['Time'] = "Time Field Is Empty";
 
@@ -34,6 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
 
         $errors['Time'] = "Not Logical Dates";
     }
+
 
     // Validate Image
 
@@ -72,7 +76,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
         
         if(move_uploaded_file($imgTemp,$disPath)){
 
-        $sql = "insert into tasks (title,content,start,end,image) values ('$title','$content','$start','$end','$imgFinalName')";
+        $user_id = $_SESSION['user']['id'];
+        
+        $sql = "insert into tasks (title,content,start,end,image,user_id) values ('$title','$content','$start','$end','$imgFinalName','$user_id')";
 
         $op  =  mysqli_query($con,$sql);
 
@@ -118,12 +124,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
 
     <div>
     <label>Start Date</label>
-    <input type="date" required name="start"  value="<?php echo(date('Y-m-d')); ?>" min = "<?php echo(date('Y-m-d')); ?>" max = "3000-03-15">
+    <input type="date" required name="start" value="2022-2-15" min = "2022-2-15" max = "3000-3-15">
     </div>
 
     <div>
     <label>End Date</label>
-    <input type="date" required name="end" value="<?php echo(date('Y-m-d')); ?>" min = "<?php echo(date('Y-m-d')); ?>" max = "3000-03-15">
+    <input type="date" required name="end" value="2022-2-15" min = "2022-2-15" max = "3000-3-15">
     </div>
 
     <div>
@@ -138,3 +144,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST"){
     
 </body>
 </html>
+<?php
+}
+else{
+    header("Location: login.php");
+}
+?>
